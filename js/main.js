@@ -1,3 +1,9 @@
+// ! hide Modal...
+
+
+
+
+
 //! Getting The Country Parent Section
 var parentSection = document.getElementById('country-section');
 
@@ -15,7 +21,7 @@ callingAllCountryList = async () => {
 
 
 	try {
-		
+		document.getElementById('modal').style.display = 'none';
 		progressBar('30%')
 		const response = await fetch(urlCountry)
 		progressBar('60%');
@@ -36,7 +42,7 @@ const progressBar = (progress) => {
 }
 // ! Display Progress Bar End
 
-
+	
 
 
 

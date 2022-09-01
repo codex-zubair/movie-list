@@ -29,15 +29,46 @@ callingAllUniversityList = async (countryName) => {
 
 
 // !All University List of Specific Country Start
-const universityList = (country)=>
+const universityList = (university)=>
 {
-    console.log(country);
+    console.log(university);
+    document.getElementById('modal').style.display = 'block';
     
     
-    country.forEach(country => {
+    university.forEach(university => {
 
-        console.log(country.name);
-        console.log(country.web_pages[0]);
+
+
+
+        // !Parent OL
+        var parentOl= document.getElementById('university-list-ol');
+        // !Parent OL
+
+
+        // Creating li
+        const li = document.createElement('li');
+        // Creating li
+
+
+        // !Configuring li Values...
+        li.classList.add("mb-5", "text-lg", "font-normal", "text-white");
+        li.setAttribute('type',1);
+        // !Configuring li Values...
+
+        li.innerText = university.name;
+
+        li.innerHTML = `<a class="text-white hover:text-lime-400" href="www.google.com">${university.web_pages[0]}</a>`
+
+        
+        // !Append into OL as a Child...
+        parentOl.appendChild(li);
+        // !Append into OL as a Child...
+        
+        
+
+
+
+
        
         
     });
@@ -47,3 +78,14 @@ const universityList = (country)=>
 
 
 
+
+
+
+
+
+// ! Modal Section Close Button
+document.getElementById('university-list-close-btn').addEventListener('click',()=>{
+    document.getElementById('modal').style.display = 'none';
+    parentOl.innerHTML = ``;
+});
+// ! Modal Section Close Button
