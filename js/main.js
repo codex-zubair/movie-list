@@ -32,12 +32,10 @@ callingAllCountryList();
 
 countryList = (countryList) => {
 
+	const countrySlice =  countryList.slice(0,6);
 
-	countryList.forEach(country => {
 
-
-		console.log(country);
-
+	countrySlice.forEach(country => {
 
 
 
@@ -60,10 +58,11 @@ countryList = (countryList) => {
 
 		div.innerHTML = ` <div>
 
-			<h2 class= "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">TOP UNIVERSITY</h2>
+			<h2 class= "mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">TOP 
+			UNIVERSITY</h2>
 
 			<a href="#">
-			<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${country.name.common}</h5>
+			<h5 class="mb-2 text-xl font-bold tracking-tight text-blue-400 dark:text-white">${country.name.common}</h5>
 			</a>
 
 
