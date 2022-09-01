@@ -10,16 +10,12 @@ const urlCountry = "https://restcountries.com/v3.1/all";
 
 
 
-
-// Country Wise University. API
-const universityUrl = "http://universities.hipolabs.com/search?country=bangladesh";
-
-
 callingAllCountryList = async () => {
 
 
 
 	try {
+		
 		progressBar('30%')
 		const response = await fetch(urlCountry)
 		progressBar('60%');
@@ -28,10 +24,8 @@ callingAllCountryList = async () => {
 		countryList(country);
 		progressBar('100%');
 		
-
 	}
-	catch (error)
-	{
+	catch (error) {
 		console.log(error);
 	}
 }
@@ -75,6 +69,7 @@ countryList = (countryList) => {
 
 	if (showAll != 'show') {
 		var countrySlice = countryList.slice(0, 6);
+		document.getElementById('show-all-btn').style.display = 'block';
 	}
 
 
@@ -126,6 +121,9 @@ countryList = (countryList) => {
 			<div >
 			<img width="150px" class="h-20" src="${country.flags.svg}" alt="">
 			</div>
+
+
+			
 			`
 
 
