@@ -1,7 +1,3 @@
-// ! hide Modal...
-
-
-
 
 
 //! Getting The Country Parent Section
@@ -22,6 +18,7 @@ callingAllCountryList = async () => {
 
 	try {
 		document.getElementById('modal').style.display = 'none';
+		document.getElementById('footer').style.display = 'none';
 		progressBar('30%')
 		const response = await fetch(urlCountry)
 		progressBar('60%');
@@ -76,6 +73,7 @@ countryList = (countryList) => {
 	if (showAll != 'show') {
 		var countrySlice = countryList.slice(0, 6);
 		document.getElementById('show-all-btn').style.display = 'block';
+		document.getElementById('footer').style.display = 'block';
 	}
 
 
