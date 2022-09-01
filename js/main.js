@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 // const all Country Name API
 const urlCountry = "https://restcountries.com/v3.1/all";
 
@@ -28,20 +36,69 @@ callingAllCountryList();
 
 
 
-// Getting The Value Of Top Country Movie Movie List...
 
+
+
+
+
+
+
+
+
+
+
+// *Show ALL Button Are False
+var showAll = 'notShow';
+
+// !Show all button start
+document.getElementById('show-all-btn').addEventListener('click',()=> 
+{
+	showAll = 'show';
+	console.log('working');
+	callingAllCountryList();
+
+})
+// !Show all button End
+
+
+
+
+// Getting The Value Of Top Country Movie Movie List...
 countryList = (countryList) => {
 
-	const countrySlice =  countryList.slice(0,6);
+
+	if(showAll != 'show')
+	{
+		var countrySlice =  countryList.slice(0,6);
+	}
+
+
+	else
+	{
+		var countrySlice =  countryList;
+	}
+
+	
+	
+	
+	
+
+	
 
 
 	countrySlice.forEach(country => {
 
 
+		// TODO 
+		//! Clearing Parent Section All Elements...
+		parentSection.textContent = ``;
+		
+
+
 
 
 		//! Getting The Country Parent Section
-		const parentSection = document.getElementById('country-section');
+		var parentSection = document.getElementById('country-section');
 
 
 
@@ -97,6 +154,9 @@ countryList = (countryList) => {
 
 
 // !Calling Country List
+
+
+
 
 
 
