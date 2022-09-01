@@ -1,8 +1,5 @@
-
-
-
-
-
+//! Getting The Country Parent Section
+var parentSection = document.getElementById('country-section');
 
 
 
@@ -18,26 +15,32 @@ const urlCountry = "https://restcountries.com/v3.1/all";
 const universityUrl = "http://universities.hipolabs.com/search?country=bangladesh";
 
 
-callingAllCountryList = () => {
+callingAllCountryList = async () => {
 
 
 
-	fetch(urlCountry)
-		.then(response => response.json())
-		.then(country => countryList(country))
-		.catch(err => console.error(err));
+	try {
+		progressBar('30%')
+		const response = await fetch(urlCountry)
+		progressBar('60%');
+		const country = await response.json();
+		progressBar('80%');
+		countryList(country);
+		progressBar('100%');
+		
+
+	}
+	catch (error)
+	{
+		console.log(error);
+	}
 }
 
-
-
-callingAllCountryList();
-
-
-
-
-
-
-
+// ! Display Progress Bar Start
+const progressBar = (progress) => {
+	document.getElementById('progress-bar').style.width = progress;
+}
+// ! Display Progress Bar End
 
 
 
@@ -51,10 +54,13 @@ callingAllCountryList();
 var showAll = 'notShow';
 
 // !Show all button start
-document.getElementById('show-all-btn').addEventListener('click',()=> 
-{
+document.getElementById('show-all-btn').addEventListener('click', (event) => {
 	showAll = 'show';
 	console.log('working');
+	parentSection.innerHTML = ``;
+
+	event.target.style.display = 'none';
+
 	callingAllCountryList();
 
 })
@@ -67,38 +73,26 @@ document.getElementById('show-all-btn').addEventListener('click',()=>
 countryList = (countryList) => {
 
 
-	if(showAll != 'show')
-	{
-		var countrySlice =  countryList.slice(0,6);
+	if (showAll != 'show') {
+		var countrySlice = countryList.slice(0, 6);
 	}
 
 
-	else
-	{
-		var countrySlice =  countryList;
+	else {
+		var countrySlice = countryList;
 	}
 
-	
-	
-	
-	
 
-	
+
+
+
+
+
 
 
 	countrySlice.forEach(country => {
 
 
-		// TODO 
-		//! Clearing Parent Section All Elements...
-		parentSection.textContent = ``;
-		
-
-
-
-
-		//! Getting The Country Parent Section
-		var parentSection = document.getElementById('country-section');
 
 
 
@@ -108,7 +102,7 @@ countryList = (countryList) => {
 
 
 		// ! Adding Calls List...
-		div.classList.add('p-6', 'max-w-sm', 'bg-white', 'rounded-lg', 'border', 'border-gray-200', 'shadow-md', 'dark:bg-gray-800', 'dark:border-gray-700', 'flex','space-x-12','items-center');
+		div.classList.add('p-6', 'max-w-sm', 'bg-white', 'rounded-lg', 'border', 'border-gray-200', 'shadow-md', 'dark:bg-gray-800', 'dark:border-gray-700', 'flex', 'space-x-12', 'items-center');
 
 
 
@@ -138,8 +132,8 @@ countryList = (countryList) => {
 
 
 
-			// appending Child div into Parent Section...
-			parentSection.appendChild(div);
+		// appending Child div into Parent Section...
+		parentSection.appendChild(div);
 
 
 
@@ -154,6 +148,9 @@ countryList = (countryList) => {
 
 
 // !Calling Country List
+callingAllCountryList();
+
+
 
 
 
